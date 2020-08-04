@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading">
       <i class="loading-box"></i>
     </loading>
-    <div class="col-md-10 ml-sm-auto px-4">
+    <div class="col-md-10 ml-sm-auto px-4 mt">
       <table class="table table-striped mt-5">
         <thead class="img-thead-col font-weight-bold">
           <tr>
@@ -80,7 +80,6 @@ export default {
     getData(page = 1) {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/storage?page=${page}`;
-
       this.$http.get(url)
         .then((res) => {
           this.isLoading = false;

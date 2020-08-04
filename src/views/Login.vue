@@ -36,7 +36,7 @@
             <button
               class="btn btn-block login-btn"
               type="submit"
-              :disabled="isProcessing"
+              :disabled="isLoading"
             >
               登入
             </button>

@@ -225,7 +225,7 @@
                       <span class="invalid-feedback">{{ errors[0] }}</span>
                     </validation-provider>
                     <div class="form-group">
-                      <div class="form-check modal-checkbox">
+                      <div class="form-check modal-checkbox text-center">
                         <input
                           class="form-check-input"
                           type="checkbox"

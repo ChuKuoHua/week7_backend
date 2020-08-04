@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading">
       <i class="loading-box"></i>
     </loading>
-    <div class="col-md-10 ml-sm-auto px-4">
+    <div class="col-md-10 ml-sm-auto px-4 mt-5">
       <div class="text-left mr-2 mt-2 pt-2e">
         <button
           class="btn btn-add"

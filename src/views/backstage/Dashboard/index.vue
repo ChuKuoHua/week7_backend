@@ -6,13 +6,11 @@
     <Navbar />
     <div>
       <Sidebar />
-      <scrollTop/>
       <router-view :token="token" v-if="checkSuccess"></router-view>
     </div>
   </div>
 </template>
 <script>
-import scrollTop from '@/components/ScrollTop/ScrollTop.vue';
 import Navbar from '../components/Navbar.vue';
 import Sidebar from '../components/Sidebar.vue';
 
@@ -21,7 +19,6 @@ export default {
   components: {
     Navbar,
     Sidebar,
-    scrollTop,
   },
   data() {
     return {

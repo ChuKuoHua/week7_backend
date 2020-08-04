@@ -3,7 +3,7 @@
     <loading :active.sync="isLoading">
       <i class="loading-box"></i>
     </loading>
-    <div class="col-md-10 ml-sm-auto px-4">
+    <div class="col-md-10 ml-sm-auto px-4 mt">
       <table class="table table-striped mt-5">
         <thead class="ord-thead-col font-weight-bold">
           <tr class="text-left">

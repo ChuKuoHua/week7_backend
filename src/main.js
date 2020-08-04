@@ -25,7 +25,6 @@ Vue.config.productionTip = false;
 
 // Loading
 Vue.component('Loading', Loading);
-
 // axios
 Vue.use(VueAxios, axios);
 

@@ -74,13 +74,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.modal-order-header {
-  background-color: #4a757b;
-  box-shadow: 0 1px 5px;
-}
-.modal-order-shadow {
-  box-shadow: 0 0 5px inset;
-}
-</style>

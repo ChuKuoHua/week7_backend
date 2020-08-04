@@ -3,10 +3,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import 'reset/reset';
 @import 'tool/tool';
-// btn
-@import 'style/login_btn';
-@import 'style/product_btn';
-
 @import 'style/_checkbox';
 // loading
 @import 'loading/loading';
@@ -16,3 +12,8 @@
 @import 'login/login';
 @import 'product_manage/management';
 @import 'product_manage/modal';
+
+@import 'style/navbar';
+// btn
+@import 'style/login_btn';
+@import 'style/product_btn';

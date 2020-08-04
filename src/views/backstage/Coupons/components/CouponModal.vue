@@ -116,7 +116,7 @@
               </div>
               <hr class="hr-my">
               <div class="form-group">
-                <div class="form-check modal-checkbox">
+                <div class="form-check modal-checkbox text-center">
                   <input
                     class="form-check-input"
                     type="checkbox"

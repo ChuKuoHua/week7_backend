@@ -101,12 +101,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-  .del-img-modal{
-    margin: 0 auto 1em auto;
-    height: 150px;
-    width: 150px;
-    background-size: cover;
-  }
-</style>

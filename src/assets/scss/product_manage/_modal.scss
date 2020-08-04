@@ -111,7 +111,6 @@
     outline-offset: 15px;
   }
 }
-
 // coupons style
 .coupons-modal-label{
   text-align: left;
@@ -124,4 +123,19 @@
 }
 .coupons-modal-footer{
   background: #4c9db521;
+}
+// order
+.modal-order-header {
+  background-color: #4a757b;
+  box-shadow: 0 1px 5px;
+}
+.modal-order-shadow {
+  box-shadow: 0 0 5px inset;
+}
+// storages
+.del-img-modal{
+  margin: 0 auto 1em auto;
+  height: 150px;
+  width: 150px;
+  background-size: cover;
 }
