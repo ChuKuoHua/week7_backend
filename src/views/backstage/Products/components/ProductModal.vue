@@ -94,11 +94,12 @@
                       tag="div"
                       v-slot="{ errors, classes}"
                     >
-                      <label 
+                      <label
                         for="title"
                         class="mb-1 modal-label">商品名稱</label>
                       <input
                         type="text"
+                        :class="classes"
                         class="form-control form-input-border"
                         id="title"
                         v-model="tempProduct.title"
@@ -110,7 +111,7 @@
                       <validation-provider
                         rules="required"
                         class="form-group col-md-6"
-                        tag="div"
+                        tag="div"                        
                         v-slot="{ errors, classes}"
                       >
                         <label
@@ -118,6 +119,7 @@
                           class="mb-1 modal-label">分類</label>
                         <input
                           type="text"
+                          :class="classes"
                           class="form-control form-input-border"
                           id="category"
                           v-model="tempProduct.category"
@@ -138,6 +140,7 @@
                           type="unit"
                           class="form-control form-input-border"
                           id="unit"
+                          :class="classes"
                           v-model="tempProduct.unit"
                           placeholder="請輸入單位" required
                         >

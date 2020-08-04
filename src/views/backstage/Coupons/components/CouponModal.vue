@@ -105,7 +105,7 @@
                 >
                   折扣百分比
                 </label>
-                <input 
+                <input
                   type="number"
                   class="form-control"
                   id="price"
@@ -240,7 +240,7 @@ export default {
             icon: 'error',
           });
         });
-    this.isLoading = false;
+      this.isLoading = false;
     },
   },
   watch: {

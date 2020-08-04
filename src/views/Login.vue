@@ -65,7 +65,7 @@ export default {
           // expires 設置有效時間
           document.cookie = `hexToken=${token}; expires=${new Date(expired * 1000)};`;
           this.$router.push('/admin/Products');
-        })
+        });
     },
     signout() {
       document.cookie = 'hexToken=;expires=;';

@@ -144,7 +144,7 @@ export default {
 
       this.$http.patch(url, item.id)
         .then(() => {
-          Toast.fire({ 
+          Toast.fire({
             title: `付款狀態已修改`,
             icon: 'success',
           });
