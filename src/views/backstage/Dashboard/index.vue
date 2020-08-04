@@ -39,21 +39,21 @@ export default {
       this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 
       // Axios 預設值
-      this.$http.defaults.headers["Authorization"] = `Bearer ${this.token}`;
+      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
       const api = `${process.env.VUE_APP_APIPATH}/auth/check`;
 
-      this.$http.post(api, {'api_token':this.token})
-      .then((res) => {
-        // 登入成功
-        if (res.data.success) {
+      this.$http.post(api, { 'token': this.token })
+        .then((res) => {
+          // 登入成功
+          if (res.data.success) {
+            this.isLoading = false;
+            this.checkSuccess = true;
+          }
+        }).catch((err) => {
+          // 驗證失敗，轉回登入頁
           this.isLoading = false;
-          this.checkSuccess = true;
-        }
-      }).catch((err) => {
-        // 驗證失敗，轉回登入頁
-        this.isLoading = false;
-        this.$router.push('/login');
-      });
+          this.$router.push('/login');
+        });
     },
   },
 };

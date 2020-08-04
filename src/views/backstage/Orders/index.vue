@@ -95,6 +95,7 @@
 import Pagination from '@/components/Pagination.vue';
 import Toast from '@/components/alert/Toast';
 import OrderModal from './components/OrderModal.vue';
+
 export default {
   name: 'BackOrders',
   components: {
@@ -116,10 +117,10 @@ export default {
     this.getOrders();
   },
   methods: {
-    getOrders(pages = 1){
+    getOrders(pages = 1) {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/orders?page=${pages}`;
-      
+
       this.$http.get(url)
         .then((res) => {
           this.orders = res.data.data;

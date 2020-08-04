@@ -56,7 +56,7 @@
 import $ from 'jquery';
 import Pagination from '@/components/Pagination.vue';
 import Toast from '@/components/alert/Toast';
-import DelStorages from './components//DelStorages.vue';
+import DelStorages from './components/DelStorages.vue';
 
 export default {
   name: 'BackPictures',
@@ -77,10 +77,10 @@ export default {
     this.getData();
   },
   methods: {
-    getData( page = 1 ) {
+    getData(page = 1) {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/storage?page=${page}`;
-    
+
       this.$http.get(url)
         .then((res) => {
           this.isLoading = false;

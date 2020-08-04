@@ -43,7 +43,7 @@
             class="btn btn-cancel"
             data-dismiss="modal"
           >取消</button>
-          <button 
+          <button
             type="button"
             class="btn btn-del"
             @click="delProductData"
@@ -63,7 +63,7 @@ export default {
     return {
       token: '',
       uuid: process.env.VUE_APP_UUID,
-    }
+    };
   },
   props: {
     tempProduct: {
@@ -77,7 +77,7 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/product/${this.tempProduct.id}`;
       this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
       // Axios 預設值
-      this.$http.defaults.headers['Authorization'] = `Bearer ${this.token}`;
+      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
 
       this.$http.delete(api)
         .then(() => {
@@ -97,4 +97,3 @@ export default {
   },
 };
 </script>
-

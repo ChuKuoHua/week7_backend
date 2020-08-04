@@ -82,7 +82,7 @@ export default {
         .then((res) => {
           $('#delCouponModal').modal('hide');
           this.$emit('update');
-          if (res.status === 200 ) {
+          if (res.status === 200) {
             Toast.fire({
               title: '優惠券刪除成功',
               icon: 'success',
@@ -93,7 +93,7 @@ export default {
               icon: 'error',
             });
           }
-      });
+        });
     },
   },
 };

@@ -128,7 +128,7 @@ export default {
           this.$refs.tempCoupon = {};
           $('#couponModal').modal('show');
           this.isNew = true;
-        break;
+          break;
         // 由於 const 與 let 宣告環境較特別，故需要在 case 外層宣告一個 {} 確保作用域
         case 'edit': {
           this.$refs.couponModal.getCoupon(item.id);

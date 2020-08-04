@@ -81,12 +81,12 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/storage/${this.tempData.id}`;
       this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 
-      this.$http.defaults.headers["Authorization"] = `Bearer ${this.token}`;
+      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
       this.$http.delete(url)
         .then(() => {
           $('#deleteModal').modal('hide');
           this.$emit('update');
-          Toast.fire({ 
+          Toast.fire({
             title: '刪除成功',
             icon: 'success',
           });

@@ -245,12 +245,12 @@
               <div class="modal-footer modal-footer-col">
                 <button
                   type="button"
-                  class="btn modal-btn product-cancel" 
+                  class="btn modal-btn product-cancel"
                   data-dismiss="modal">取消</button>
                 <button
                   type="button"
-                  class="btn modal-btn product-certain" 
-                  @click="updateProduct">確定</button>
+                  class="btn modal-btn product-certain"
+                  :disabled="invalid">確定</button>
               </div>
             </form>
           </validation-observer>
@@ -316,23 +316,23 @@ export default {
         api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/product/${this.tempProduct.id}`;
         httpMethod = 'patch';
         this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-        this.$http.defaults.headers["Authorization"] = `Bearer ${this.token}`;
+        this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
       }
 
       this.$http[httpMethod](api, this.tempProduct)
-      .then(() => {
-        Toast.fire({
-          title: '編輯成功',
-          icon: 'success',
+        .then(() => {
+          Toast.fire({
+            title: '編輯成功',
+            icon: 'success',
+          });
+          this.$emit('update');
+        }).catch(() => {
+          Toast.fire({
+            title: '編輯失敗',
+            icon: 'error',
+          });
         });
-        this.$emit('update');
-      }).catch(() => {
-        Toast.fire({
-          title: '編輯失敗',
-          icon: 'error',
-        });
-      });
-    $('#productModal').modal('hide');
+      $('#productModal').modal('hide');
     },
     uploadFile() {
       const uploadedfile = document.querySelector('#customFile').files[0];
@@ -362,10 +362,11 @@ export default {
           $('#customFile').value = '';
           this.state.fileUpLoading = false;
         });
-    }
-  }
-}
+    },
+  },
+};
 </script>
+
 <style lang="css">
 /* Import the Quill styles you want */
 @import '~quill/dist/quill.core.css';

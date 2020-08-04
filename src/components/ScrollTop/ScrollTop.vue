@@ -13,7 +13,7 @@ export default {
   methods: {
     scrollTop() {
       $('html ,body').animate({
-        scrollTop: 0
+        scrollTop: 0,
       }, 1000);
     },
   },

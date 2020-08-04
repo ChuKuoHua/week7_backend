@@ -24,37 +24,37 @@
 
 <script>
 export default {
-    data() {
-      return {
-        active: '',
-        sidebarList: [
-          {
-            id: 1,
-            name: '產品列表',
-            router: '/admin/products',
-            icon: 'boxes',
-          },
-          {
-            id: 2,
-            name: '訂單列表',
-            router: '/admin/orders',
-            icon: 'stream',
-          },
-          {
-            id: 3,
-            name: '優惠券',
-            router: '/admin/coupons',
-            icon: 'percent',
-          },
-          {
-            id: 4,
-            name: '圖片儲存列表',
-            router: '/admin/storages',
-            icon: 'images',
-          },
-        ],
-      };
-    },
+  data() {
+    return {
+      active: '',
+      sidebarList: [
+        {
+          id: 1,
+          name: '產品列表',
+          router: '/admin/products',
+          icon: 'boxes',
+        },
+        {
+          id: 2,
+          name: '訂單列表',
+          router: '/admin/orders',
+          icon: 'stream',
+        },
+        {
+          id: 3,
+          name: '優惠券',
+          router: '/admin/coupons',
+          icon: 'percent',
+        },
+        {
+          id: 4,
+          name: '圖片儲存列表',
+          router: '/admin/storages',
+          icon: 'images',
+        },
+      ],
+    };
+  },
   methods: {
     addActive(key) {
       this.active = key;

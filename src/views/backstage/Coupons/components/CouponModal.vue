@@ -243,9 +243,9 @@ export default {
     this.isLoading = false;
     },
   },
-  watch:{
+  watch: {
     isNew(val) {
-      if ( val === true ) {
+      if (val === true) {
         this.tempCoupon = {};
         this.due_date = '';
         this.due_time = '';

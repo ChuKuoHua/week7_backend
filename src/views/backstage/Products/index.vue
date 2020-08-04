@@ -115,17 +115,17 @@ export default {
       this.isLoading = true;
       this.$http.get(api)
         .then((res) => {
-          console.log(res)
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
           this.isLoading = false;
-      }).catch(() => {
+      })
+      .catch(() => {
         Toast.fire({
           title: '資料讀取失敗，請稍後再試',
           icon: 'error',
         });
         this.isLoading = false;
-      })
+      });
     },
     // 開啟 Modal 視窗
     openModal(type, item) {
