@@ -6,14 +6,13 @@
 
 <script>
 export default {
-  data(){
-    return{
+  data() {
+    return {
       isLoading: false,
     };
   },
 };
 </script>
-
 
 <style lang="scss">
 #app {

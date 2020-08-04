@@ -2,11 +2,11 @@
   <div>
     <nav aria-label="Page navigation example" class="mb-3">
     <ul class="pagination justify-content-center">
-      <li 
-        class="page-item" 
+      <li
+        class="page-item"
         :class="{'disabled': pages.current_page === 1}"
       >
-        <a 
+        <a
           class="page-link"
           href="#"
           aria-label="Previous"
@@ -15,13 +15,13 @@
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <li 
+      <li
         v-for="(item, index) in pages.total_pages"
         :key="index"
         class="page-item"
         :class="{'active': item === pages.current_page}"
       >
-        <a 
+        <a
           class="page-link"
           href="#"
           @click.prevent="changePage(item)"
@@ -31,7 +31,7 @@
         class="page-item"
         :class="{'disabled': pages.current_page === pages.total_pages}"
       >
-        <a 
+        <a
           class="page-link"
           href="#"
           aria-label="Next"

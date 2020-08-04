@@ -31,7 +31,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div 
+          <div
             class="del-img-modal"
             :style="{ backgroundImage: `url(${tempData.path})` }"
           >
@@ -61,14 +61,14 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '@/components/alert/Toast.js';
+import Toast from '@/components/alert/Toast';
 
 export default {
-  data(){
-    return{
+  data() {
+    return {
       tokrn: '',
       uuid: process.env.VUE_APP_UUID,
-    }
+    };
   },
   props: {
     tempData: {
@@ -77,11 +77,11 @@ export default {
     },
   },
   methods: {
-    deleteData(){
+    deleteData() {
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/storage/${this.tempData.id}`;
       this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 
-      this.$http.defaults.headers['Authorization'] = `Bearer ${this.token}`;
+      this.$http.defaults.headers["Authorization"] = `Bearer ${this.token}`;
       this.$http.delete(url)
         .then(() => {
           $('#deleteModal').modal('hide');
@@ -92,11 +92,11 @@ export default {
           });
         }).catch(() => {
           $('#deleteModal').modal('hide');
-          Toast.fire({ 
+          Toast.fire({
             title: '刪除失敗',
             icon: 'error',
           });
-        })
+        });
     },
   },
 };

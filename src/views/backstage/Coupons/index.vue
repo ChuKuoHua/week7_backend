@@ -5,7 +5,7 @@
     </loading>
     <div class="col-md-10 ml-sm-auto px-4">
       <div class="text-left mr-2 mt-2 pt-2e">
-        <button 
+        <button
           class="btn btn-add"
           @click="openCouponModal('created')"
         >
@@ -38,24 +38,24 @@
             <td>{{item.percent}}</td>
             <td class="text-center">{{item.deadline.datetime}}</td>
             <td class="text-right">
-              <span 
-                v-if="item.enabled" 
+              <span
+                v-if="item.enabled"
                 class="text-success"
               >啟用</span>
-              <span 
-                v-else 
+              <span
+                v-else
                 class="text-secondary"
               >未啟用</span>
             </td>
             <td class="text-right">
-              <button 
-                class="btn btn-outline-primary btn-sm mr-2" 
+              <button
+                class="btn btn-outline-primary btn-sm mr-2"
                 @click="openCouponModal('edit',item)"
               >
                 <font-awesome-icon :icon="['fa', 'edit']" />
               </button>
-              <button 
-                class="btn btn-outline-danger btn-sm" 
+              <button
+                class="btn btn-outline-danger btn-sm"
                 @click="openCouponModal('delete',item)"
               >
                 <font-awesome-icon :icon="['fa', 'trash']" />
@@ -73,7 +73,7 @@
         @update="getCoupons"
       />
       <!-- 刪除 Modal -->
-      <DelCouponModal 
+      <DelCouponModal
         :temp-coupon="tempCoupon"
         @update="getCoupons"
       />
@@ -83,9 +83,9 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '@/components/alert/Toast.js';
 import CouponModal from './components/CouponModal.vue';
 import DelCouponModal from './components/DelCouponModal.vue';
+
 export default {
   name: 'BackCoupons',
   data() {
@@ -104,15 +104,15 @@ export default {
       uuid: process.env.VUE_APP_UUID,
     };
   },
-  components:{
+  components: {
     CouponModal,
     DelCouponModal,
   },
   created() {
     this.getCoupons();
   },
-  methods:{
-    getCoupons(){
+  methods: {
+    getCoupons() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/coupons`;
 
@@ -121,9 +121,9 @@ export default {
         this.isLoading = false;
       });
     },
-    openCouponModal(status, item){
+    openCouponModal(status, item) {
       this.status = status;
-      switch (status){
+      switch (status) {
         case 'created':
           this.$refs.tempCoupon = {};
           $('#couponModal').modal('show');
@@ -131,7 +131,6 @@ export default {
         break;
         // 由於 const 與 let 宣告環境較特別，故需要在 case 外層宣告一個 {} 確保作用域
         case 'edit': {
-          this.$refs.tempCoupon = Object.assign({}, item);
           this.$refs.couponModal.getCoupon(item.id);
           this.isNew = false;
           break;

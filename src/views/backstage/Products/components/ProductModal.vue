@@ -3,31 +3,31 @@
     <loading :active.sync="isLoading">
       <i class="loading-box"></i>
     </loading>
-    <div 
-      class="modal fade" 
-      id="productModal" 
-      tabindex="-1" 
-      role="dialog" 
-      aria-labelledby="exampleModalLabel" 
+    <div
+      class="modal fade"
+      id="productModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div 
-        class="modal-dialog modal-lg" 
+      <div
+        class="modal-dialog modal-lg"
         role="document"
       >
         <div class="modal-content border-0">
           <div class="modal-header modal-header-color">
-            <h5 
-              class="modal-title" 
+            <h5
+              class="modal-title"
               id="exampleModalLabel"
             >
               <span v-if="isNew">新增商品</span>
               <span v-else>修改商品</span>
             </h5>
-            <button 
-              type="button" 
-              class="close" 
-              data-dismiss="modal" 
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
               aria-label="Close"
             >
               <span aria-hidden="true">
@@ -40,19 +40,19 @@
               <div class="modal-body d-shadow">
                 <div class="row">
                   <div class="col-sm-4 border-right">
-                    <validation-provider 
+                    <validation-provider
                       rules="required"
                       class="form-group"
                       tag="div"
                       v-slot="{ errors, classes}"
                     >
-                      <label 
+                      <label
                         for="image"
                         class="modal-label"
                       >
                         輸入圖片網址
                       </label>
-                      <input 
+                      <input
                         type="text"
                         class="form-control"
                         id="image"
@@ -63,81 +63,81 @@
                       <span class="invalid-feedback">{{ errors[0] }}</span>
                     </validation-provider>
                     <div class="form-group">
-                      <label 
-                        for="customFile" 
+                      <label
+                        for="customFile"
                         class="modal-label"
                       >
                         或 上傳圖片
-                        <i 
+                        <i
                           v-if="state.fileUpLoading"
                           class="fas fa-spinner fa-spin"
                         ></i>
                       </label>
-                      <input 
-                        type="file" 
-                        id="customFile" 
-                        ref="files" 
-                        class="form-control form-input-border" 
+                      <input
+                        type="file"
+                        id="customFile"
+                        ref="files"
+                        class="form-control form-input-border"
                         @change="uploadFile"
                       />
                     </div>
-                    <img 
-                      class="img-fluid" 
-                      :src="tempProduct.imageUrl[0]" 
+                    <img
+                      class="img-fluid"
+                      :src="tempProduct.imageUrl[0]"
                       alt=""
                     />
                   </div>
                   <div class="col-sm-8">
-                    <validation-provider 
+                    <validation-provider
                       rules="required"
                       class="form-group"
                       tag="div"
                       v-slot="{ errors, classes}"
                     >
                       <label 
-                        for="title" 
+                        for="title"
                         class="mb-1 modal-label">商品名稱</label>
-                      <input 
-                        type="text" 
-                        class="form-control form-input-border" 
-                        id="title" 
+                      <input
+                        type="text"
+                        class="form-control form-input-border"
+                        id="title"
                         v-model="tempProduct.title"
                         placeholder="請輸入名稱" required
                       >
                       <span class="invalid-feedback">{{ errors[0] }}</span>
                     </validation-provider>
                     <div class="form-row">
-                      <validation-provider 
+                      <validation-provider
                         rules="required"
                         class="form-group col-md-6"
                         tag="div"
                         v-slot="{ errors, classes}"
                       >
-                        <label 
-                          for="category" 
+                        <label
+                          for="category"
                           class="mb-1 modal-label">分類</label>
-                        <input 
-                          type="text" 
-                          class="form-control form-input-border" 
-                          id="category" 
+                        <input
+                          type="text"
+                          class="form-control form-input-border"
+                          id="category"
                           v-model="tempProduct.category"
                           placeholder="請輸入分類" required
                         />
                         <span class="invalid-feedback">{{ errors[0] }}</span>
                       </validation-provider>
-                      <validation-provider 
+                      <validation-provider
                         rules="required"
                         class="form-group col-md-6"
                         tag="div"
                         v-slot="{ errors, classes}"
                       >
-                        <label 
-                          for="unit" 
+                        <label
+                          for="unit"
                           class="mb-1 modal-label">單位</label>
-                        <input 
-                          type="unit" 
-                          class="form-control form-input-border" 
-                          id="unit" 
+                        <input
+                          type="unit"
+                          class="form-control form-input-border"
+                          id="unit"
                           v-model="tempProduct.unit"
                           placeholder="請輸入單位" required
                         >
@@ -145,18 +145,18 @@
                       </validation-provider>
                     </div>
                     <div class="form-row">
-                      <validation-provider 
+                      <validation-provider
                         rules="required"
                         class="form-group col-md-6"
                         tag="div"
                         v-slot="{ errors, classes}"
                       >
-                        <label 
-                          for="origin_price" 
+                        <label
+                          for="origin_price"
                           class="mb-1 modal-label">原價</label>
-                        <input 
-                          type="number" 
-                          class="form-control form-input-border" 
+                        <input
+                          type="number"
+                          class="form-control form-input-border"
                           id="origin_price"
                           :class="classes"
                           v-model="tempProduct.origin_price"
@@ -164,19 +164,19 @@
                           required>
                         <span class="invalid-feedback">{{ errors[0] }}</span>
                       </validation-provider>
-                      <validation-provider 
+                      <validation-provider
                         rules="required"
                         class="form-group col-md-6"
                         tag="div"
                         v-slot="{ errors, classes}"
                       >
-                        <label 
-                          for="price" 
+                        <label
+                          for="price"
                           class="mb-1 modal-label">售價</label>
-                        <input 
-                          type="number" 
-                          class="form-control form-input-border" 
-                          id="price" 
+                        <input
+                          type="number"
+                          class="form-control form-input-border"
+                          id="price"
                           v-model="tempProduct.price"
                           placeholder="請輸入售價"
                           :class="classes"
@@ -186,34 +186,34 @@
                       </validation-provider>
                     </div>
                     <hr class="hr-my">
-                    <validation-provider 
+                    <validation-provider
                       rules="required"
                       tag="div"
                       v-slot="{ errors, classes}"
                     >
-                      <label 
-                        for="depict" 
+                      <label
+                        for="depict"
                         class="mb-1 modal-label">產品描述</label>
-                      <textarea 
-                        type="text" 
-                        class="form-control" 
-                        id="depict" 
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        id="depict"
                         v-model="tempProduct.content"
-                        placeholder="請輸入產品描述" 
+                        placeholder="請輸入產品描述"
                         :class="classes"
                         required></textarea>
                       <span class="invalid-feedback">{{ errors[0] }}</span>
                     </validation-provider>
-                    <validation-provider 
+                    <validation-provider
                       rules="required"
                       class="form-group mt-3"
                       tag="div"
                       v-slot="{ errors, classes}"
                     >
-                      <label 
-                        for="description" 
+                      <label
+                        for="description"
                         class="mb-1 modal-label">說明內容</label>
-                      <vue-editor 
+                      <vue-editor
                         id="description"
                         class="text-left"
                         style="letter-spacing: 0px"
@@ -223,16 +223,16 @@
                     </validation-provider>
                     <div class="form-group">
                       <div class="form-check modal-checkbox">
-                        <input 
+                        <input
                           class="form-check-input"
-                          type="checkbox" 
-                          v-model="tempProduct.enabled" 
+                          type="checkbox"
+                          v-model="tempProduct.enabled"
                           :true-value="true"
                           :false-value="false"
                           id="enabled"
                         >
-                        <label 
-                          class="form-check-label" 
+                        <label
+                          class="form-check-label"
                           for="enabled"
                         >
                           是否啟用
@@ -243,11 +243,11 @@
                 </div>
               </div>
               <div class="modal-footer modal-footer-col">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   class="btn modal-btn product-cancel" 
                   data-dismiss="modal">取消</button>
-                <button 
+                <button
                   type="button"
                   class="btn modal-btn product-certain" 
                   @click="updateProduct">確定</button>
@@ -288,8 +288,8 @@ export default {
       required: true,
     },
   },
-  methods:{
-    getProduct(id){
+  methods: {
+    getProduct(id) {
       this.isLoading = true;
       const api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/product/${id}`;
       this.$http
@@ -307,7 +307,7 @@ export default {
           this.isLoading = false;
         });
     },
-    updateProduct(){
+    updateProduct() {
       // 新增商品
       let api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/product`;
       let httpMethod = 'post';
@@ -316,7 +316,7 @@ export default {
         api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/product/${this.tempProduct.id}`;
         httpMethod = 'patch';
         this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-        this.$http.defaults.headers['Authorization'] = `Bearer ${this.token}`;
+        this.$http.defaults.headers["Authorization"] = `Bearer ${this.token}`;
       }
 
       this.$http[httpMethod](api, this.tempProduct)
@@ -334,7 +334,7 @@ export default {
       });
     $('#productModal').modal('hide');
     },
-    uploadFile(){
+    uploadFile() {
       const uploadedfile = document.querySelector('#customFile').files[0];
       const formData = new FormData();
       formData.append('file', uploadedfile);

@@ -15,8 +15,8 @@
             <th>客戶資料</th>
           </tr>
         </thead>
-        <tbody 
-          v-if="orders.length" 
+        <tbody
+          v-if="orders.length"
           class="flex text-left"
         >
           <tr
@@ -31,7 +31,7 @@
                   v-for="(product, i) in item.products"
                   :key="i"
                 >
-                  {{ product.product.title }} 
+                  {{ product.product.title }}
                   數量：{{ product.quantity }}
                   {{ product.product.unit }}
                 </li>
@@ -70,7 +70,7 @@
               </div>
             </td>
             <td>
-              <button 
+              <button
                 class="btn btn-outline-primary btn-sm mr-1"
                 @click.prevent="openModal(item)">
                 <font-awesome-icon :icon="['fa', 'id-card']" size="lg"/>
@@ -125,7 +125,7 @@ export default {
           this.orders = res.data.data;
           this.pagination = res.data.meta.pagination;
           this.isLoading = false;
-        }).catch(() =>{
+        }).catch(() => {
           Toast.fire({
             title: '資料讀取失敗，請稍後再試',
             icon: 'error',
@@ -133,7 +133,7 @@ export default {
           this.isLoading = false;
         });
     },
-    setOrderPaid(item){
+    setOrderPaid(item) {
       this.isLoading = true;
       let url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/orders/${item.id}/paid`;
 

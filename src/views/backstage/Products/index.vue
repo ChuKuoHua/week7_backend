@@ -5,8 +5,8 @@
     </loading>
     <div class="col-md-10 ml-sm-auto px-4">
       <div class="text-left mr-2 mt-2 pt-2e">
-        <button 
-          class="btn btn-add" 
+        <button
+          class="btn btn-add"
           @click.prevent="openModal('new')"
         >
           建立新產品
@@ -44,14 +44,14 @@
               <span v-else class="text-secondary">未啟用</span>
             </td>
             <td class="text-right">
-              <button 
-                class="btn btn-outline-primary btn-sm mr-2" 
+              <button
+                class="btn btn-outline-primary btn-sm mr-2"
                 @click.prevent="openModal('edit',item)"
               >
                 <font-awesome-icon :icon="['fa', 'edit']" />
               </button>
-              <button 
-                class="btn btn-outline-danger btn-sm" 
+              <button
+                class="btn btn-outline-danger btn-sm"
                 @click.prevent="openModal('delete',item)"
               >
                 <font-awesome-icon :icon="['fa', 'trash']" />
@@ -66,13 +66,13 @@
         @changePage="getProducts"
       ></Pagination>
       <!-- 新增/編輯 -->
-      <ProductModal 
+      <ProductModal
         ref="productModal"
         :isNew="isNew"
         @update="getProducts"
       />
       <!-- 刪除 Modal -->
-      <DelProductModal 
+      <DelProductModal
         :temp-product="tempProduct"
         @update="getProducts"
       />
@@ -82,7 +82,7 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '@/components/alert/Toast.js';
+import Toast from '@/components/alert/Toast';
 import Pagination from '@/components/Pagination.vue';
 import ProductModal from './components/ProductModal.vue';
 import DelProductModal from './components/DelProductModal.vue';
@@ -119,7 +119,7 @@ export default {
           this.products = res.data.data;
           this.pagination = res.data.meta.pagination;
           this.isLoading = false;
-      }).catch(() =>{
+      }).catch(() => {
         Toast.fire({
           title: '資料讀取失敗，請稍後再試',
           icon: 'error',
@@ -128,7 +128,7 @@ export default {
       })
     },
     // 開啟 Modal 視窗
-    openModal(type, item){
+    openModal(type, item) {
       switch (type) {
         case 'new':
           this.$refs.productModal.tempProduct = {

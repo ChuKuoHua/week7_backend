@@ -17,7 +17,7 @@
             :key="key"
           >
             <td>
-              <img 
+              <img
                 :src="item.path"
                 width="100px"
                 class="img-fluid"
@@ -46,7 +46,7 @@
       <!-- 刪除 Modal -->
       <DelStorages
         :temp-data="tempData"
-        @update="getData" 
+        @update="getData"
       />
     </div>
   </div>
@@ -55,11 +55,12 @@
 <script>
 import $ from 'jquery';
 import Pagination from '@/components/Pagination.vue';
-import Toast from '@/components/alert/Toast.js';
+import Toast from '@/components/alert/Toast';
 import DelStorages from './components//DelStorages.vue';
+
 export default {
   name: 'BackPictures',
-  components:{
+  components: {
     Pagination,
     DelStorages,
   },
@@ -75,8 +76,8 @@ export default {
   created() {
     this.getData();
   },
-  methods:{
-    getData(page = 1){
+  methods: {
+    getData( page = 1 ) {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/storage?page=${page}`;
     
@@ -94,7 +95,7 @@ export default {
           });
         });
     },
-    openModel(item){
+    openModel(item) {
       $('#deleteModal').modal('show');
       this.tempData = { ...item };
     },

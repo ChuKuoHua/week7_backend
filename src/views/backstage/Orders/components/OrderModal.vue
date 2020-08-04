@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="modal fade"
     id="orderModal"
     tabindex="-1"
@@ -7,19 +7,19 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div 
+    <div
       class="modal-dialog modal-sm"
       role="document"
     >
       <div class="modal-content">
         <div class="modal-header modal-order-header">
-          <h5 
+          <h5
             class="modal-title"
             id="exampleModalLabel"
           >
             顧客資料
           </h5>
-          <button 
+          <button
             type="button"
             class="close"
             data-dismiss="modal"
@@ -45,7 +45,7 @@
 
 <script>
 import $ from 'jquery';
-import Toast from '@/components/alert/Toast.js';
+import Toast from '@/components/alert/Toast';
 
 export default {
   data() {
@@ -76,12 +76,11 @@ export default {
 </script>
 
 <style lang="scss">
-.modal-order-header{
+.modal-order-header {
   background-color: #4a757b;
   box-shadow: 0 1px 5px;
 }
-.modal-order-shadow{
+.modal-order-shadow {
   box-shadow: 0 0 5px inset;
 }
 </style>
-

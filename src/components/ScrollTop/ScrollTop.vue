@@ -8,16 +8,15 @@
 
 <script>
 import $ from 'jquery';
-import toggletop from '../../animate/animate.js';
 
 export default {
-  methods:{
-    scrollTop(){
+  methods: {
+    scrollTop() {
       $('html ,body').animate({
-        scrollTop:0
+        scrollTop: 0
       }, 1000);
     },
-  }
+  },
 };
 </script>
 
@@ -25,9 +24,6 @@ export default {
 $org: #e89666;
 $gray: #f8f9fa;
 .top {
-	position: fixed;
-	bottom: 40px;
-	left: 40px;
   display: none;
   z-index: 220;
   a{

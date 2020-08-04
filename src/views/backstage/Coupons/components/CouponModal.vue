@@ -3,28 +3,28 @@
     <loading :active.sync="isLoading">
       <i class="loading-box"></i>
     </loading>
-    <div 
+    <div
       class="modal fade"
-      id="couponModal" 
+      id="couponModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div 
+      <div
         class="modal-dialog modal-sm"
         role="document"
       >
         <div class="modal-content">
           <div class="modal-header modal-header-color">
-            <h5 
+            <h5
               class="modal-title"
               id="exampleModalLabel"
             >
               <span v-if="status === 'created'">建立優惠券</span>
               <span v-else>更新優惠券</span>
             </h5>
-            <button 
+            <button
               type="button"
               class="close"
               data-dismiss="modal"
@@ -38,29 +38,29 @@
           <div class="modal-body d-shadow">
             <div class="">
               <div class="form-group">
-                <label 
+                <label
                   for="title"
                   class="mb-1 coupons-modal-label"
                 >
                   標題
                 </label>
-                <input 
-                  type="text" 
-                  class="form-control" 
-                  id="title" 
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
                   v-model="tempCoupon.title"
-                  placeholder="請輸入標題" 
+                  placeholder="請輸入標題"
                   required
                 >
               </div>
               <div class="form-group">
-                <label 
+                <label
                   for="coupon_code"
                   class="mb-1 coupons-modal-label"
                 >
                   優惠碼
                 </label>
-                <input 
+                <input
                   type="text"
                   class="form-control"
                   id="coupon_code"
@@ -70,13 +70,13 @@
                 >
               </div>
               <div class="form-group">
-                <label 
+                <label
                   for="due_date"
                   class="mb-1 coupons-modal-label"
                 >
                   到期日
                 </label>
-                <input 
+                <input
                   type="date"
                   class="form-control"
                   id="due_date"
@@ -84,13 +84,13 @@
                 >
               </div>
               <div class="form-group">
-                <label 
+                <label
                   for="due_time"
                   class="mb-1 coupons-modal-label"
                 >
                   到期時間
                 </label>
-                <input 
+                <input
                   type="time"
                   class="form-control"
                   id="due_time"
@@ -99,16 +99,16 @@
                 >
               </div>
               <div class="form-group">
-                <label 
-                  for="price" 
+                <label
+                  for="price"
                   class="mb-1 coupons-modal-label"
                 >
                   折扣百分比
                 </label>
                 <input 
-                  type="number" 
-                  class="form-control" 
-                  id="price" 
+                  type="number"
+                  class="form-control"
+                  id="price"
                   v-model="tempCoupon.percent"
                   placeholder="請輸入折扣數量"
                   required
@@ -117,15 +117,15 @@
               <hr class="hr-my">
               <div class="form-group">
                 <div class="form-check modal-checkbox">
-                  <input 
-                    class="form-check-input" 
-                    type="checkbox" 
-                    v-model="tempCoupon.enabled" 
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    v-model="tempCoupon.enabled"
                     :true-value="true"
-                    :false-value="false" 
+                    :false-value="false"
                     id="enabled"
                   >
-                  <label 
+                  <label
                     class="form-check-label font-weight-bold"
                     for="enabled"
                   >
@@ -136,16 +136,16 @@
             </div>
           </div>
           <div class="modal-footer coupons-modal-footer">
-            <button 
-              type="button" 
-              class="btn modal-btn product-cancel" 
+            <button
+              type="button"
+              class="btn modal-btn product-cancel"
               data-dismiss="modal"
             >
               取消
             </button>
-            <button 
-              type="button" 
-              class="btn modal-btn product-certain" 
+            <button
+              type="button"
+              class="btn modal-btn product-certain"
               @click="updateCoupon"
             >
               {{ status === 'created' ? '新增優惠卷' : '更新優惠券' }}
@@ -182,12 +182,12 @@ export default {
       type: String,
       required: true,
     },
-    isNew:{
+    isNew: {
       type: Boolean,
       default: true,
     },
   },
-  methods:{
+  methods: {
     getCoupon(id) {
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/coupon/${id}`;
       this.$http
@@ -197,8 +197,7 @@ export default {
           this.tempCoupon = res.data.data;
           // 使用 split 切割相關時間戳
           const dedlineAt = this.tempCoupon.deadline.datetime.split(' ');
-          this.due_date = dedlineAt[0]; // 日期
-          this.due_time = dedlineAt[1]; // 時間
+          [this.due_date, this.due_time] = [dedlineAt[0], dedlineAt[1]];
         })
         .catch(() => {
           Toast.fire({
@@ -207,12 +206,12 @@ export default {
           });
         });
     },
-    updateCoupon(){
+    updateCoupon() {
       this.isLoading = true;
       let api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/coupon`;
       let httpMethod = '';
       let message = '新增';
-      if (this.status === 'created'){
+      if (this.status === 'created') {
         httpMethod = 'post';
       } else {
         api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/coupon/${this.tempCoupon.id}`;
@@ -230,13 +229,13 @@ export default {
           this.tempCoupon = {};
           this.due_date = '';
           this.due_time = '';
-          Toast.fire({ 
+          Toast.fire({
             title: `優惠卷${message}成功`,
             icon: 'success',
           });
-        }).catch(()=>{
+        }).catch(() => {
           $('#couponModal').modal('hide');
-          Toast.fire({ 
+          Toast.fire({
             title: `優惠卷${message}失敗`,
             icon: 'error',
           });
@@ -245,8 +244,8 @@ export default {
     },
   },
   watch:{
-    isNew(val){
-      if(val === true){
+    isNew(val) {
+      if ( val === true ) {
         this.tempCoupon = {};
         this.due_date = '';
         this.due_time = '';
@@ -255,4 +254,3 @@ export default {
   },
 };
 </script>
-  

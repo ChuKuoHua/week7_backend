@@ -12,47 +12,46 @@
   </div>
 </template>
 <script>
+import scrollTop from '@/components/ScrollTop/ScrollTop.vue';
 import Navbar from '../components/Navbar.vue';
 import Sidebar from '../components/Sidebar.vue';
-import scrollTop from '@/components/ScrollTop/ScrollTop.vue';
+
 export default {
   name: 'BackDashboard',
-  components:{
+  components: {
     Navbar,
     Sidebar,
     scrollTop,
   },
-  data(){
+  data() {
     return {
-      tokrn: '',
+      token: '',
       isLoading: false,
       checkSuccess: false,
     };
   },
-  created(){
+  created() {
     this.checkLogin();
   },
-  methods:{
-    checkLogin(){
+  methods: {
+    checkLogin() {
       this.isLoading = true;
       this.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 
       // Axios 預設值
-      this.$http.defaults.headers['Authorization'] = `Bearer ${this.token}`;
+      this.$http.defaults.headers["Authorization"] = `Bearer ${this.token}`;
       const api = `${process.env.VUE_APP_APIPATH}/auth/check`;
 
       this.$http.post(api, {'api_token':this.token})
       .then((res) => {
         // 登入成功
-        console.log(res);
-        if(res.data.success){
+        if (res.data.success) {
           this.isLoading = false;
           this.checkSuccess = true;
         }
       }).catch((err) => {
         // 驗證失敗，轉回登入頁
         this.isLoading = false;
-        console.log(err);
         this.$router.push('/login');
       });
     },

@@ -14,37 +14,48 @@
           </div>
           <div class="form-group form-box">
             <label for="inputEmail" class="mb-2">帳號</label>
-            <input id="inputEmail" v-model="user.email" type="email" class="form-control" placeholder="Email"
-            required autofocus>
+            <input id="inputEmail"
+              v-model="user.email"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              required autofocus
+            >
           </div>
           <div class="form-group form-box">
             <label for="inputPassword" class="mb-2">密碼</label>
-            <input id="inputPassword" v-model="user.password" type="password" class="form-control"
-            placeholder="Password" required>
+            <input
+              id="inputPassword"
+              v-model="user.password"
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              required
+            >
           </div>
           <button class="btn btn-block login-btn" type="submit">
             登入
-          </button>           
+          </button>
         </form>
       </div>
-    </div>    
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Login',
-  data(){
-    return{
-      user:{
+  data() {
+    return {
+      user: {
         email: '',
         password: '',
       },
-      token:'',
+      token: '',
     };
   },
-  methods:{
-    signin(){
+  methods: {
+    signin() {
       const api = `${process.env.VUE_APP_APIPATH}/auth/login`;
       this.$http.post(api, this.user)
         .then((res) => {
@@ -54,7 +65,7 @@ export default {
           // expires 設置有效時間
           document.cookie = `hexToken=${token}; expires=${new Date(expired * 1000)};`;
           this.$router.push('/admin/Products');
-        }).catch((err) =>{
+        }).catch((err) => {
           console.log(err);
         });
     },

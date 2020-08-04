@@ -17,18 +17,17 @@ import App from './App.vue';
 import router from './router';
 import currencyFilter from './filters/currency';
 import dateFilter from './filters/date';
+// css 樣式
+import './assets/scss/all.scss';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 Vue.config.productionTip = false;
 
 // Loading
-Vue.component('Loading',Loading);
+Vue.component('Loading', Loading);
 
 // axios
 Vue.use(VueAxios, axios);
-
-// css 樣式
-import './assets/scss/all.scss';
-import 'vue-loading-overlay/dist/vue-loading.css';
 
 // vee-validate
 Object.keys(rules).forEach((rule) => {
@@ -50,6 +49,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.filter('currency', currencyFilter);
 Vue.filter('dateFilter', dateFilter);
+
 new Vue({
   router,
   render: (h) => h(App),
