@@ -111,7 +111,7 @@
                       <validation-provider
                         rules="required"
                         class="form-group col-md-6"
-                        tag="div"                        
+                        tag="div"
                         v-slot="{ errors, classes}"
                       >
                         <label
