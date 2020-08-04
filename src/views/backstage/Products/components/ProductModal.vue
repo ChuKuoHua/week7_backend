@@ -251,7 +251,7 @@
                   class="btn modal-btn product-cancel"
                   data-dismiss="modal">取消</button>
                 <button
-                  type="button"
+                  type="submit"
                   class="btn modal-btn product-certain"
                   :disabled="invalid">確定</button>
               </div>
@@ -329,7 +329,8 @@ export default {
             icon: 'success',
           });
           this.$emit('update');
-        }).catch(() => {
+        })
+        .catch(() => {
           Toast.fire({
             title: '編輯失敗',
             icon: 'error',
@@ -371,6 +372,8 @@ export default {
 </script>
 
 <style lang="css">
+@import '~vue2-editor/dist/vue2-editor.css';
+
 /* Import the Quill styles you want */
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.bubble.css';

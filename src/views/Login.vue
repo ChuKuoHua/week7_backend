@@ -7,10 +7,6 @@
             <h1 class="h3 font-weight-normal">
               後台登入
             </h1>
-            <router-link to="/"
-            class="btn login-home-btn">
-              <font-awesome-icon :icon="['fa', 'home']" class="h-icon-size"/>
-            </router-link>
           </div>
           <div class="form-group form-box">
             <label for="inputEmail" class="mb-2">帳號</label>
