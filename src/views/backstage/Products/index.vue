@@ -37,8 +37,8 @@
           <tr v-for="item in products" :key="item.id">
             <td>{{item.category}}</td>
             <td>{{item.title}}</td>
-            <td>{{item.origin_price}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.origin_price | currency}}</td>
+            <td>{{item.price | currency}}</td>
             <td class="text-right">
               <span v-if="item.enabled" class="text-success">啟用</span>
               <span v-else class="text-secondary">未啟用</span>
@@ -48,13 +48,13 @@
                 class="btn btn-outline-primary btn-sm mr-2"
                 @click.prevent="openModal('edit',item)"
               >
-                <font-awesome-icon :icon="['fa', 'edit']" />
+                <font-awesome-icon :icon="['fa', 'edit']"/>
               </button>
               <button
                 class="btn btn-outline-danger btn-sm"
                 @click.prevent="openModal('delete',item)"
               >
-                <font-awesome-icon :icon="['fa', 'trash']" />
+                <font-awesome-icon :icon="['fa', 'trash']"/>
               </button>
             </td>
           </tr>
@@ -111,8 +111,8 @@ export default {
   },
   methods: {
     getProducts(page = 1) {
-      const api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/products?page=${page}`;
       this.isLoading = true;
+      const api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/products?page=${page}`;
       this.$http.get(api)
         .then((res) => {
           this.products = res.data.data;

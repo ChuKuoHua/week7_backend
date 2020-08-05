@@ -311,6 +311,7 @@ export default {
         });
     },
     updateProduct() {
+      this.isLoading = true;
       // 新增商品
       let api = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/product`;
       let httpMethod = 'post';
@@ -329,12 +330,14 @@ export default {
             icon: 'success',
           });
           this.$emit('update');
+          this.isLoading = false;
         })
         .catch(() => {
           Toast.fire({
             title: '編輯失敗',
             icon: 'error',
           });
+          this.isLoading = false;
         });
       $('#productModal').modal('hide');
     },

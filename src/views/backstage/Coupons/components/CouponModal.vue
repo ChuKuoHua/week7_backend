@@ -189,6 +189,7 @@ export default {
   },
   methods: {
     getCoupon(id) {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}/${this.uuid}/admin/ec/coupon/${id}`;
       this.$http
         .get(url)
@@ -198,12 +199,14 @@ export default {
           // 使用 split 切割相關時間戳
           const dedlineAt = this.tempCoupon.deadline.datetime.split(' ');
           [this.due_date, this.due_time] = [dedlineAt[0], dedlineAt[1]];
+          this.isLoading = false;
         })
         .catch(() => {
           Toast.fire({
             title: '無法取得資料，請稍後再試',
             icon: 'error',
           });
+          this.isLoading = false;
         });
     },
     updateCoupon() {
@@ -233,14 +236,15 @@ export default {
             title: `優惠卷${message}成功`,
             icon: 'success',
           });
+          this.isLoading = false;
         }).catch(() => {
           $('#couponModal').modal('hide');
           Toast.fire({
             title: `優惠卷${message}失敗`,
             icon: 'error',
           });
+          this.isLoading = false;
         });
-      this.isLoading = false;
     },
   },
   watch: {
