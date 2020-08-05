@@ -41,7 +41,7 @@
               {{ item.payment }}
             </td>
             <td>
-              {{ item.amount }}
+              {{ item.amount | currency}}
             </td>
             <td class="text-left">
               <div class="custom-control custom-switch">
